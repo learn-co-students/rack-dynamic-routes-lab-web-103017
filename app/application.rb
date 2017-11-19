@@ -8,7 +8,7 @@ class Application
 
     if req.path.match(/items/)
       path_item = req.path.split("/items/").last
-      item = Item.all.select {|item| item.name == path_item}.first
+      item = Item.all.find {|item| item.name == path_item}
       if item
         resp.write "#{item.price}"
       else
